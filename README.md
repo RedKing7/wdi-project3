@@ -7,4 +7,7 @@
 - ![UML](https://github.com/RedKing7/wdi-project3/blob/master/readmeStuff/UML.png)
 
 ## Wireframe
-- - ![UML](https://github.com/RedKing7/wdi-project3/blob/master/readmeStuff/Wireframe.png)
+- ![UML](https://github.com/RedKing7/wdi-project3/blob/master/readmeStuff/Wireframe.png)
+
+## Heroku app
+- [here](https://game-backlog.herokuapp.com/)
