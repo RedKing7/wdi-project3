@@ -4,4 +4,4 @@
 - [trello](https://github.com/RedKing7/wdi-project3.git)
 
 ## UML and Wireframe
-- images inside readmeStuff folder
+- images and xml files inside `/readmeStuff/`
