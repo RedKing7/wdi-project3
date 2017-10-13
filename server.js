@@ -11,11 +11,16 @@ connection.on('connected', ()=>{console.log('Mongoose connected successfully')})
 connection.on('error', (err)=>{console.log('mongoose connection error: ', err)})
 
 app.use(bodyParser.json());
-app.get('/', (req,res)=>{
-   res.send('<h1>Hello, World!</h1>')
+// app.get('/', (req,res)=>{
+//    res.send('<h1>Hello, World!</h1>')
+// })
+
+app.use(express.static(__dirname + '/client/build/'));
+app.get('/', (req, res)=>{
+   res.sendFile(__dirname+'/client/build/index.html');
 })
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3001;
 app.listen(PORT, ()=>{
    console.log('Express server running on port ', PORT);
 })
