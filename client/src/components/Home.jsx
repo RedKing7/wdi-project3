@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom'
 import styled from 'styled-components';
 
 const Main = styled.div`
-   background-color: black;
-   color: white;
+   font-family: Sans-serif;
+   text-align: center;
 `
 
 class Home extends Component {
@@ -11,6 +12,8 @@ class Home extends Component {
       return (
          <Main>
             <h1>Home</h1>
+            <hr/>
+            <Link to='/login'>Log In</Link>
          </Main>
       );
    }

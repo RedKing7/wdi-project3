@@ -48,7 +48,19 @@ const rory = new User({
    platforms: [pc, nSwitch]
 })
 
+const steve = new User({
+  username: 'Steve'
+})
+
+const noname = new User({
+  username: 'N/A'
+})
+
 User.remove({})
   .then(() => rory.save())
-  .then(() => console.log('Successful Save'))
+  .then(() => console.log('Successfully Saved rory'))
+  .then(() => steve.save())
+  .then(() => console.log('Successfully Saved steve'))
+  .then(() => noname.save())
+  .then(() => console.log('Successfully Saved noname'))
   .then(() => mongoose.connection.close())
