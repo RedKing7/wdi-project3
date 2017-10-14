@@ -1,7 +1,7 @@
 # wdi-project3
 
 ## Trello board
-- [trello](https://github.com/RedKing7/wdi-project3.git)
+- [trello](https://trello.com/b/lVjva8GT/project-3)
 
 ## UML
 - ![UML](https://github.com/RedKing7/wdi-project3/blob/master/readmeStuff/UML.png)
