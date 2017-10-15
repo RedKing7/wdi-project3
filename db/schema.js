@@ -50,9 +50,7 @@ const UserSchema = mongoose.Schema({
       type: String,
       unique: true
    },
-   owned: [GameSchema],
-   wantToPlay: [GameSchema],
-   needToFinish: [GameSchema],
+   games: [GameSchema],
    platforms: [PlatformSchema]
 })
 

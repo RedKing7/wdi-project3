@@ -6,46 +6,58 @@ import Signup from './Signup';
 
 const LoginMain = styled.div`
    text-align: center;
+   font-family: Sans-serif;
 `
-
 const Users = styled.div`
    display: flex;
    flex-direction: row;
 `
-
 const UserList = styled.div`
-   width: 30%;
+   width: 25%;
    margin: 5%;
    min-height: 300px;
 
-   text-align: left;
    background-color: gray;
+   border-radius: 10;
 
    padding: 5%;
-
-   label{
-      margin-left: 10%;
-   }
 `
+const Selection = styled.div`
+   label{
+      display: block;
+      padding: 5px;
+      border-radius: 10px;
+   }
 
+   label:hover{
+      background-color: blue;
+   }
+
+   input{
+      display: none;
+   }
+
+   input:checked + label{
+      background-color: darkblue;
+   }
+`  
 const UserOptions = styled.div`
    background-color: gray;
-   width: 50%;
+   width: 65%;
    margin: 5%;
    min-height: 300px;
 
    a{
+      display: block;
       text-decoration: none;
       color: white;
+      border-top: 1px solid gray;
+      border-bottom: 1px solid gray;
    }
    a:hover{
-      color: blue;
-   }
-`
-
-const Selection = styled.div`
-   label{
-      font-family: Sans-serif;
+      background-color: blue;
+      border-top: 1px solid black;
+      border-bottom: 1px solid black;
    }
 `
 
@@ -73,6 +85,15 @@ class LoginPage extends Component {
       }catch(err){console.log(err)}
    }
 
+   newUser = async (username) =>{
+      try{
+         const response = await axios.post('/api/users', {
+            "user": {username}
+         })
+         this.getUsers();
+      }catch(err){console.log(err)}
+   }
+
    render() {
       return (
          <LoginMain>
@@ -88,7 +109,7 @@ class LoginPage extends Component {
                               key={user._id}
                               type='radio'
                               name='user'
-                              htmlFor={`userChoice${index}`}
+                              id={`userChoice${index}`}
                               value={index}
                               onClick={this.handleRadio}
                            />
@@ -104,17 +125,17 @@ class LoginPage extends Component {
                      <div>
                         <h1>{this.state.selection.username}</h1>
                         <hr/>
-                        <Link to={`/users/${this.state.selection._id}`}>View</Link>
+                        <Link to={`/${this.state.selection._id}`}>View</Link>
                         <br/>
                         <Link to='#'>Delete</Link>
                      </div>
                   :
-                     null
+                     null //set userOptions display to none
                }
                </UserOptions>
             </Users>
             <hr/>
-            <Signup/>
+            <Signup newUser={this.newUser}/>
          </LoginMain>
       );
    }

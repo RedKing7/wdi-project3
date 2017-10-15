@@ -42,18 +42,18 @@ const fallout = new Game({
 
 const rory = new User({
    username: 'RJ',
-   owned: [fallout, botw],
-   wantToPlay: [battlefront],
-   needToFinish: [fallout, botw],
+   games: [fallout, botw, battlefront],
    platforms: [pc, nSwitch]
 })
 
 const steve = new User({
-  username: 'Steve'
+  username: 'Steve',
+  platforms: [nSwitch]
 })
 
 const noname = new User({
-  username: 'N/A'
+  username: 'N/A',
+  platforms: [pc]
 })
 
 User.remove({})
