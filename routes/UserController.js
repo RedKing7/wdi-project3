@@ -34,7 +34,8 @@ router.post('/', async (req, res) => {
 })
 
 router.delete('/:id', async (req, res) => {
-   const deleted = await User.findByIdAndRemove(req.params.userId)
+   let userId = req.params.id;
+   let deleted = await User.findByIdAndRemove(userId)
    res.json(deleted)
  })
 

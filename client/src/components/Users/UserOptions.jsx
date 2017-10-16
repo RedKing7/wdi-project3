@@ -25,13 +25,8 @@ const UserOptionsDiv = styled.div`
 
 class UserOptions extends Component {
 
-   handleDeleteUser = async () =>{
-      try{
-         console.log(this.props.selection._id);
-         let { userId } = this.props.selection._id;
-         let response = await axios.delete(`/api/users/${userId}`)
-         console.log(response);
-      }catch(err){console.log(err)}
+   handleDelete = () =>{
+      this.props.handleDeleteUser(this.props.selection._id);
    }
 
    render() {
@@ -44,7 +39,7 @@ class UserOptions extends Component {
                      <hr/>
                      <Link to={`/${this.props.selection._id}`}>View</Link>
                      <br/>
-                     <Link to={`/login`} onClick={this.handleDeleteUser}>Delete</Link>
+                     <Link to={`/login`} onClick={this.handleDelete}>Delete</Link>
                   </div>
                :
                   null //set userOptions display to none

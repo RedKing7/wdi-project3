@@ -47,6 +47,15 @@ class LoginPage extends Component {
       }catch(err){console.log(err)}
    }
 
+   deleteUser = async (userId) =>{
+      try{
+         let response = await axios.delete(`/api/users/${userId}`);
+         console.log(response.data);
+         this.setState({selection: null});
+         this.getUsers();
+      }catch(err){console.log(err)}
+   }
+
    render() {
       return (
          <LoginMain>
@@ -54,7 +63,7 @@ class LoginPage extends Component {
             <hr/>
             <Users>
                <UserList users={this.state.users} handleRadio={this.handleRadio}/>
-               <UserOptions selection={this.state.selection}/>
+               <UserOptions selection={this.state.selection} handleDeleteUser={this.deleteUser}/>
             </Users>
             <hr/>
             <Signup newUser={this.newUser}/>
