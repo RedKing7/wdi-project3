@@ -49,8 +49,7 @@ class LoginPage extends Component {
 
    deleteUser = async (userId) =>{
       try{
-         let response = await axios.delete(`/api/users/${userId}`);
-         console.log(response.data);
+         await axios.delete(`/api/users/${userId}`);
          this.setState({selection: null});
          this.getUsers();
       }catch(err){console.log(err)}

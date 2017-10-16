@@ -33,10 +33,13 @@ router.post('/', async (req, res) => {
   }
 })
 
+//delete user
 router.delete('/:id', async (req, res) => {
-   let userId = req.params.id;
-   let deleted = await User.findByIdAndRemove(userId)
-   res.json(deleted)
+    try{
+      let userId = req.params.id;
+      let deleted = await User.findByIdAndRemove(userId)
+      res.json(deleted)
+    }catch(err){console.log(err)}
  })
 
 module.exports = router
