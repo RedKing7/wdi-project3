@@ -2,6 +2,7 @@ const express = require('express')
 const router = express.Router()
 const { User } = require('../db/schema')
 
+//get all users
 router.get('/', async (req, res) => {
   try {
     const users = await User.find({})
@@ -11,6 +12,7 @@ router.get('/', async (req, res) => {
   }
 })
 
+//find one user
 router.get('/:id', async (req, res) => {
   try {
     const user = await User.findById(req.params.id)
@@ -20,6 +22,7 @@ router.get('/:id', async (req, res) => {
   }
 })
 
+//add new user
 router.post('/', async (req, res) => {
   try {
     const newUser = new User(req.body.user)
@@ -29,5 +32,10 @@ router.post('/', async (req, res) => {
     res.send(err)
   }
 })
+
+router.delete('/:id', async (req, res) => {
+   const deleted = await User.findByIdAndRemove(req.params.userId)
+   res.json(deleted)
+ })
 
 module.exports = router
