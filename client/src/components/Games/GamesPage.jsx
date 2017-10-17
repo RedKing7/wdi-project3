@@ -16,7 +16,8 @@ const Games = styled.div`
 class GamesPage extends Component {
    state = {
       user: {},
-      games: []
+      games: [],
+      tab: 'All Games'
    }
 
    async componentWillMount(){
@@ -62,17 +63,64 @@ class GamesPage extends Component {
       this.setState({games: this.state.user.games});
    }
 
+   changeTab = (e) =>{
+      const tab = e.target.id;
+      switch(tab){
+         case 'my-games':
+            let myGames = this.state.user.games.filter((game)=>{
+               return game.owned
+            })
+            this.setState({games: myGames});
+            this.setState({tab: 'My Games'})
+            break;
+         case 'need-to-finish':
+            let ntfGames = this.state.user.games.filter((game)=>{
+               return (game.owned && (game.progress < 100));
+            })
+            this.setState({games: ntfGames});
+            this.setState({tab: 'Need to Finish'});
+            break;
+
+         case 'complete':
+            let completeGames = this.state.user.games.filter((game)=>{
+                  return game.progress === 100;
+            })
+            this.setState({games: completeGames});
+            this.setState({tab: 'Complete'});
+            break;
+            
+         case 'want-to-play':
+            let wtpGames = this.state.user.games.filter((game)=>{
+               return !game.owned;
+            })
+            this.setState({games: wtpGames});
+            this.setState({tab: 'Want to Play'});
+            break;
+
+         case 'all':
+            this.setState({games: this.state.user.games})
+            this.setState({tab: 'All Games'});
+            break;
+         }
+   }
+
    render() {
       return (
          <GamesMain>
             <h1>Games</h1>
             <hr/>
 
-            {/* tab selector goes here */}
+            <span>
+               <button onClick={this.changeTab} id='my-games'>My Games</button>
+               <button onClick={this.changeTab} id='need-to-finish'>Need to Finish</button>
+               <button onClick={this.changeTab} id='complete'>Completed</button>
+               <button onClick={this.changeTab} id='want-to-play'>Want to Play</button>
+               <button onClick={this.changeTab} id='all'>All Games</button>
+            </span>
             <Games>
 
             </Games>
-            <h1>All Games</h1>
+            <h1>{this.state.tab}</h1>
             <GamesList
                games={this.state.games}
                deleteGame={this.deleteGame}

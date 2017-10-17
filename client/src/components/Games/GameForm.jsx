@@ -4,6 +4,7 @@ import styled from 'styled-components';
 const FormDiv = styled.div`
    background-color: gray;
    color: white;
+   margin-top: 50px;
    
    .input{
       width: 70%;
