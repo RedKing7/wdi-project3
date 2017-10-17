@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom'
 
 const Nav = styled.div`
+   width: 100%;
    display: flex;
    justify-content: space-around;
    height: 30px;

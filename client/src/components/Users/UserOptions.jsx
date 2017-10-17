@@ -36,9 +36,11 @@ class UserOptions extends Component {
                   <div>
                      <h1>{this.props.selection.username}</h1>
                      <hr/>
-                     <Link to={`/${this.props.selection._id}`}>View</Link>
+                     <Link to={`/${this.props.selection._id}/games`}>View Games</Link>
                      <br/>
-                     <Link to={`/login`} onClick={this.handleDelete}>Delete</Link>
+                     <Link to={`/${this.props.selection._id}/platforms`}>View Platforms</Link>
+                     <br/>
+                     <Link to={`/login`} onClick={this.handleDelete}>Delete User</Link>
                   </div>
                :
                   null //set userOptions display to none
