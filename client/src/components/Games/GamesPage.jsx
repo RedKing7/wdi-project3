@@ -8,16 +8,34 @@ const GamesMain = styled.div`
    text-align: center;
    font-family: Sans-serif;
 `
-const Games = styled.div`
-   display: flex;
-   flex-direction: column;
+const Tabs = styled.span`
+   margin: 0 auto;
+   hr{
+      margin-top: 5px;
+   }
+   input{
+      display: none;
+   }
+   label{
+      background-color: blue;
+      margin: 0 3px;
+      padding: 5px;
+      border-radius: 10px 10px 0 0;
+   }
+   input:checked+label{
+      background-color: darkblue;
+   }
+`
+const Window = styled.div`
+   background-color: darkblue;
+   margin-top: 0;
 `
 
 class GamesPage extends Component {
    state = {
       user: {},
       games: [],
-      tab: 'All Games'
+      tab: 'My Games'
    }
 
    async componentWillMount(){
@@ -25,7 +43,10 @@ class GamesPage extends Component {
          let userId = this.props.match.params.userId;
          let res = await axios.get(`/api/users/${userId}`)
          await this.setState({user: res.data});
-         this.refreshGames();
+         let myGames = this.state.user.games.filter((game)=>{
+            return game.owned
+         })
+         this.setState({games: myGames});
       }catch(err){console.log(err)}
    }
 
@@ -101,6 +122,8 @@ class GamesPage extends Component {
             this.setState({games: this.state.user.games})
             this.setState({tab: 'All Games'});
             break;
+         
+         default: console.log('something broke');
          }
    }
 
@@ -110,25 +133,33 @@ class GamesPage extends Component {
             <h1>Games</h1>
             <hr/>
 
-            <span>
-               <button onClick={this.changeTab} id='my-games'>My Games</button>
-               <button onClick={this.changeTab} id='need-to-finish'>Need to Finish</button>
-               <button onClick={this.changeTab} id='complete'>Completed</button>
-               <button onClick={this.changeTab} id='want-to-play'>Want to Play</button>
-               <button onClick={this.changeTab} id='all'>All Games</button>
-            </span>
-            <Games>
+            <Tabs>
+               <input type='radio' name='game' id='my-games' onChange={this.changeTab} checked={this.state.tab === 'My Games'}/>
+               <label htmlFor="my-games">My Games</label>
 
-            </Games>
-            <h1>{this.state.tab}</h1>
-            <GamesList
-               games={this.state.games}
-               deleteGame={this.deleteGame}
-               changeGame={this.changeGame}
-            />
+               <input type='radio' name='game' id='need-to-finish' onChange={this.changeTab} checked={this.state.tab === 'Need to Finish'}/>
+               <label htmlFor="need-to-finish">Need to Finish</label>
+
+               <input type='radio' name='game' id='complete' onChange={this.changeTab} checked={this.state.tab === 'Complete'}/>
+               <label htmlFor="complete">Completed</label>
+
+               <input type='radio' name='game' id='want-to-play' onChange={this.changeTab} checked={this.state.tab === 'Want to Play'}/>
+               <label htmlFor="want-to-play">Want to Play</label>
+
+               <input type='radio' name='game' id='all' onChange={this.changeTab} checked={this.state.tab === 'All Games'}/>
+               <label htmlFor="all">All Games</label>
+            </Tabs>
+            <Window>
+               <h1>{this.state.tab}</h1>
+               <GamesList
+                  games={this.state.games}
+                  deleteGame={this.deleteGame}
+                  changeGame={this.changeGame}
+               />
+               <button onClick={this.addGame}>New Game</button>
+            </Window>
             <hr/>
 
-            <button onClick={this.addGame}>New Game</button>
          </GamesMain>
       );
    }
