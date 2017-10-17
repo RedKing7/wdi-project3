@@ -42,8 +42,9 @@ class PlatformForm extends Component {
       changedPlatform: {}
    }
 
-   componentWillMount = () =>{
-      this.setState({changedPlatform: this.props.game})
+   componentWillMount = async () =>{
+      await this.setState({changedPlatform: this.props.platform})
+      console.log(this.state.changedPlatform);
    }
 
    handleChange = (e) =>{
