@@ -1,5 +1,12 @@
 import React, { Component } from 'react';
+import styled from 'styled-components';
 import GameForm from './GameForm';
+
+const GameDiv = styled.div`
+   input:hover{
+      background-color: blue;
+   }
+`
 
 class Game extends Component {
    state={
@@ -23,13 +30,13 @@ class Game extends Component {
    render() {
       return (
          <div>
-            <hr/>
             {
                this.state.editing ?
                   <GameForm game={this.props.game} updateGame={this.updateGame}/>
                :
-                  <div>
+                  <GameDiv>
                      <h1>{this.props.game.name}</h1>
+                     <hr/>
                      <div>
                         <div>Platform: {this.props.game.platform}</div>
                         {
@@ -49,9 +56,11 @@ class Game extends Component {
                            </div>
                         }
                      </div>
-                     <button id={this.props.game._id} onClick={this.props.handleDelete}>Delete</button>
-                     <button onClick={this.toggleEdit}>Edit</button>
-                  </div>
+                     <div className='buttons'>
+                        <button id={this.props.game._id} onClick={this.props.handleDelete}>Delete</button>
+                        <button onClick={this.toggleEdit}>Edit</button>
+                     </div>
+                  </GameDiv>
             }
          </div>
       );

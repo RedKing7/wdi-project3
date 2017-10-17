@@ -8,6 +8,10 @@ const GamesMain = styled.div`
    text-align: center;
    font-family: Sans-serif;
 `
+const Games = styled.div`
+   display: flex;
+   flex-direction: column;
+`
 
 class GamesPage extends Component {
    state = {
@@ -65,7 +69,9 @@ class GamesPage extends Component {
             <hr/>
 
             {/* tab selector goes here */}
+            <Games>
 
+            </Games>
             <h1>All Games</h1>
             <GamesList
                games={this.state.games}

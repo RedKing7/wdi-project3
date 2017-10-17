@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 
 const FormDiv = styled.div`
-   background-color: black;
+   background-color: gray;
    color: white;
    
    .input{
@@ -50,9 +50,10 @@ class GameForm extends Component {
    handleChange = (e) =>{
       const attribute = e.target.name;
       const value = e.target.type === 'checkbox' ? e.target.checked : e.target.value;
-      const changedGame = {...this.state.changedGame}
-      changedGame[attribute] = value
-      this.setState({changedGame: changedGame})
+      const changedGame = {...this.state.changedGame};
+      changedGame[attribute] = value;
+      console.log(changedGame.owned);
+      this.setState({changedGame});
    }
 
    handleSubmit = (e) =>{
@@ -72,6 +73,7 @@ class GameForm extends Component {
                               type="string"
                               onChange={this.handleChange}
                               value={this.state.changedGame.name}
+                              required
                            />
                         </div>
 

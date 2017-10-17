@@ -44,7 +44,6 @@ class PlatformForm extends Component {
 
    componentWillMount = async () =>{
       await this.setState({changedPlatform: this.props.platform})
-      console.log(this.state.changedPlatform);
    }
 
    handleChange = (e) =>{
@@ -72,6 +71,7 @@ class PlatformForm extends Component {
                               type="string"
                               onChange={this.handleChange}
                               value={this.state.changedPlatform.name}
+                              required
                            />
                         </div>
 
@@ -81,7 +81,7 @@ class PlatformForm extends Component {
                               name='manufacturer'
                               type="string"
                               onChange={this.handleChange}
-                              value={this.state.changedPlatform.platform}
+                              value={this.state.changedPlatform.manufacturer}
                            />
                         </div>
                         
