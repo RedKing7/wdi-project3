@@ -49,8 +49,8 @@ class GamesList extends Component {
 
    handleDelete = (e) =>{
       let gameId = e.target.id;
-
       this.props.deleteGame(gameId);
+      this.setState({selectedGame: null})
    }
 
    handleUpdate = async (game) =>{
