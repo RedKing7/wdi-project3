@@ -1,42 +1,39 @@
 const express = require('express')
 const router = express.Router({mergeParams: true})
-const { User, Game } = require('../db/schema')
+const { User, Platform } = require('../db/schema')
 
-//new game
+//new platform
 router.post('/', async (req, res) => {
    try{
-      const newGame = new Game()
+      const newPlatform = new Platform()
       const user = await User.findById(req.params.userId)
-      user.games.push(newGame)
+      user.platforms.push(newPlatform)
       const saved = await user.save()
       res.json(saved)
    }catch(err){res.json(err)}
 })
 
-//edit game
+//edit platform
 router.patch('/:id', async (req, res) => {
    try{
-      const updatedGame = req.body.game
+      const updatedPlatform = req.body.platform
       const user = await User.findById(req.params.userId)
-      const game = user.games.id(req.params.id)
+      const platform = user.platforms.id(req.params.id)
       
-      game.name = updatedGame.name;
-      game.owned = updatedGame.owned;
-      game.progress = updatedGame.progress;
-      game.playTime = updatedGame.playTime;
-      game.platform = updatedGame.platform;
-      game.price = updatedGame.price;
+      platform.name = updatedPlatform.name;
+      platform.price = updatedPlatform.price;
+      platform.manufacturer = updatedPlatform.manufacturer;
 
       const saved = await user.save()
       res.json(saved)
    }catch(err){res.json(err)}
 })
 
-//delete game
+//delete platform
 router.delete('/:id', async (req, res) => {
    try{
       const user = await User.findById(req.params.userId)
-      user.games.id(req.params.id).remove()
+      user.platforms.id(req.params.id).remove()
       const saved = await user.save()
       res.json(saved)
    }catch(err){res.json(err)}

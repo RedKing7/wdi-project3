@@ -31,11 +31,9 @@ class Navbar extends Component {
       return (
          <Nav>
             <div>
-               <Link to='/'>Home</Link>
-            </div>
-            <div>
                <Link to='/login'>Log in</Link>
             </div>
+            {/* if logged in, then show link to platforms and games, and logout */}
          </Nav>
       );
    }
