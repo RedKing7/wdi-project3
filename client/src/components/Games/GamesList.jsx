@@ -54,7 +54,10 @@ class GamesList extends Component {
    }
 
    handleUpdate = async (game) =>{
-      this.props.changeGame(game);
+      try{
+         await this.props.changeGame(game);
+         this.setState({selectedGame: game})
+      }catch(err){console.log(err)}
    }
 
    handleRadio = (e) =>{

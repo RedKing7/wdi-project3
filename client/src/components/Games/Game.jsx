@@ -23,7 +23,8 @@ class Game extends Component {
       try{
          await this.setState({game: changedGame})
          this.toggleEdit();
-         this.props.handleChange(this.state.game)
+         await this.props.handleChange(this.state.game)
+         this.forceUpdate();
       }catch(err){console.log(err)}
     }
 

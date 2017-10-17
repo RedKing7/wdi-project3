@@ -52,13 +52,15 @@ class GameForm extends Component {
       const value = e.target.type === 'checkbox' ? e.target.checked : e.target.value;
       const changedGame = {...this.state.changedGame};
       changedGame[attribute] = value;
-      console.log(changedGame.owned);
       this.setState({changedGame});
    }
 
-   handleSubmit = (e) =>{
-      e.preventDefault();
-      this.props.updateGame(this.state.changedGame);
+   handleSubmit = async (e) =>{
+      try{
+         e.preventDefault();
+         await this.props.updateGame(this.state.changedGame);
+
+      }catch(err){console.log(err)}
    }
 
    render() {
