@@ -68,7 +68,6 @@ class PlatformsPage extends Component {
    render() {
       return (
          <Main>
-            <h1>My Platforms</h1>
             <hr/>
             <PlatformsBlocks>
                <PlatformsList

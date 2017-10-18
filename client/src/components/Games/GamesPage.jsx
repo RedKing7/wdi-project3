@@ -112,7 +112,7 @@ class GamesPage extends Component {
                   return game.progress === 100;
             })
             this.setState({games: completeGames});
-            this.setState({tab: 'Complete'});
+            this.setState({tab: 'Completed'});
             break;
             
          case 'want-to-play':
@@ -135,9 +135,7 @@ class GamesPage extends Component {
    render() {
       return (
          <GamesMain>
-            <h1>Games</h1>
             <hr/>
-
             <Tabs>
                <input type='radio' name='game' id='my-games' onChange={this.handleRadio} checked={this.state.tab === 'My Games'}/>
                <label htmlFor="my-games">My Games</label>
@@ -145,7 +143,7 @@ class GamesPage extends Component {
                <input type='radio' name='game' id='need-to-finish' onChange={this.handleRadio} checked={this.state.tab === 'Need to Finish'}/>
                <label htmlFor="need-to-finish">Need to Finish</label>
 
-               <input type='radio' name='game' id='complete' onChange={this.handleRadio} checked={this.state.tab === 'Complete'}/>
+               <input type='radio' name='game' id='complete' onChange={this.handleRadio} checked={this.state.tab === 'Completed'}/>
                <label htmlFor="complete">Completed</label>
 
                <input type='radio' name='game' id='want-to-play' onChange={this.handleRadio} checked={this.state.tab === 'Want to Play'}/>

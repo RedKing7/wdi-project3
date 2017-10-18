@@ -11,11 +11,14 @@ const PlatformsListDiv = styled.div`
    width: 25%;
    margin: 5%;
    min-height: 300px;
+   padding: 5%;
 
    background-color: gray;
    border-radius: 20px;
 
-   padding: 5%;
+   h2{
+      margin-top: 0;
+   }
 `
 const PlatformSelection = styled.div`
    label{
@@ -81,6 +84,8 @@ class PlatformsList extends Component {
       return (
          <Platforms>
             <PlatformsListDiv>
+            <h2>My Platforms</h2>
+            <hr/>
             {
                this.props.platforms.map((platform, index) => {
                   return (

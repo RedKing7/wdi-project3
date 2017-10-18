@@ -20,7 +20,7 @@ const Nav = styled.div`
    }
 
    span{
-      width: 15%;
+      width: 8%;
       text-align: center;
       border-radius: 10px;
    }
@@ -40,35 +40,42 @@ class Navbar extends Component {
       currentUserId: null
    }
 
-   componentWillReceiveProps = () =>{
+   getUserId = () =>{
       const userId = window.location.pathname.split('/')[1]; // gets the userId portion from the url (yeah, it's hacky)
-      console.log(userId)
       this.setState({currentUserId: userId})
+   }
+
+   componentWillMount = () =>{
+      this.getUserId();
+   }
+
+   componentWillReceiveProps = () =>{
+      this.getUserId();
    }
 
    render() {
       return (
          <Nav>
             {
-            this.state.currentUserId !== null && this.state.currentUserId !== 'login' ?
-               <div>
-                  <span>
-                     <Link to={`/${this.state.currentUserId}/games`}>My Games</Link>
-                  </span>
-                  <span>
-                     <Link to={`/${this.state.currentUserId}/platforms`}>My Platforms</Link>
-                  </span>
-                  <span>
-                     <Link onClick={this.props.refreshNav} to='/login'>Change User</Link>
-                  </span>
-                  {/* when going back to login, refresh navbar */}
-               </div>
-            :       
-               <div>
-                  <span>
-                     <Link to='/login'>Log in</Link>
-                  </span>
-               </div>        
+               this.state.currentUserId !== null && this.state.currentUserId !== 'login' ?
+                  <div>
+                     <span>
+                        <Link to={`/${this.state.currentUserId}/games`}>My Games</Link>
+                     </span>
+                     <span>
+                        <Link to={`/${this.state.currentUserId}/platforms`}>My Platforms</Link>
+                     </span>
+                     <span>
+                        <Link onClick={this.props.refreshNav} to='/login'>Change User</Link>
+                     </span>
+                     {/* when going back to login, refresh navbar */}
+                  </div>
+               :       
+                  <div>
+                     <span>
+                        <Link to='/login'>Log in</Link>
+                     </span>
+                  </div>        
             }
          </Nav>
       );

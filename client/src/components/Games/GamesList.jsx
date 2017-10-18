@@ -11,11 +11,14 @@ const GamesListDiv = styled.div`
    width: 25%;
    margin: 5%;
    min-height: 300px;
+   padding: 5%;
 
    background-color: gray;
    border-radius: 20px;
 
-   padding: 5%;
+   h2{
+      margin-top: 0;
+   }
 `
 const GameSelection = styled.div`
    label{
@@ -81,6 +84,8 @@ class GamesList extends Component {
       return (
          <Games>
             <GamesListDiv>
+               <h2>{this.props.tab}</h2>
+               <hr/>
             {
                this.props.games.map((game, index) => {
                   return (
