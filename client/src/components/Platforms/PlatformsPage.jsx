@@ -4,7 +4,17 @@ import axios from 'axios';
 import styled from 'styled-components';
 
 const Main = styled.div`
-   width: 100%;
+   text-align: center;
+   font-family: Sans-serif;
+`
+
+const PlatformsBlocks = styled.div`
+   background-color: darkblue;
+   max-width: 1000px;
+   margin: 0 auto;
+   border-radius: 5px;
+   display: flex;
+   flex-direction: row;
 `
 
 class PlatformsPage extends Component {
@@ -58,22 +68,23 @@ class PlatformsPage extends Component {
 
    render() {
       return (
-         <div>
+         <Main>
             <h1>Platforms</h1>
             <hr/>
-
-            {/* tab selector goes here */}
-
             <h1>All Platforms</h1>
-            <PlatformsList
-               platforms={this.state.platforms}
-               deletePlatform={this.deletePlatform}
-               changePlatform={this.changePlatform}
-            />
+
+            <PlatformsBlocks>
+               <PlatformsList
+                  platforms={this.state.platforms}
+                  deletePlatform={this.deletePlatform}
+                  changePlatform={this.changePlatform}
+               />
+            </PlatformsBlocks>
+
             <hr/>
 
             <button onClick={this.addPlatform}>New Platform</button>
-         </div>
+         </Main>
       );
    }
 }

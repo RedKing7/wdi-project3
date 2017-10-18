@@ -53,7 +53,7 @@ class Game extends Component {
                            </div>
                            :
                            <div>
-                              <div>Price: {this.props.game.price}</div>
+                              <div>Price: ${this.props.game.price.toFixed(2)}</div>
                            </div>
                         }
                      </div>

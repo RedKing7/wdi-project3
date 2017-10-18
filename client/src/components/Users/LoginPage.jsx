@@ -10,6 +10,10 @@ const LoginMain = styled.div`
    font-family: Sans-serif;
 `
 const Users = styled.div`
+   background-color: darkblue;
+   max-width: 1000px;
+   margin: 0 auto;
+   border-radius: 5px;
    display: flex;
    flex-direction: row;
 `

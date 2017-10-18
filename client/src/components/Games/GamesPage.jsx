@@ -9,10 +9,6 @@ const GamesMain = styled.div`
    font-family: Sans-serif;
 `
 const Tabs = styled.span`
-   margin: 0 auto;
-   hr{
-      margin-top: 5px;
-   }
    input{
       display: none;
    }
@@ -20,15 +16,22 @@ const Tabs = styled.span`
       background-color: blue;
       margin: 0 3px;
       padding: 5px;
+      padding-bottom: 0;
       border-radius: 10px 10px 0 0;
    }
    input:checked+label{
       background-color: darkblue;
    }
 `
-const Window = styled.div`
+const OpenTab = styled.div`
    background-color: darkblue;
    margin-top: 0;
+   max-width: 1000px;
+   margin: 0 auto;
+   border-radius: 5px;
+   h1{
+      margin-top: 0;
+   }
 `
 
 class GamesPage extends Component {
@@ -76,7 +79,7 @@ class GamesPage extends Component {
             game: changedGame
          })
          await this.setState({user: response.data})
-         this.refreshGames();
+         this.changeTab(this.state.tab);
       }catch(err){console.log(err)}
    }
 
@@ -84,8 +87,11 @@ class GamesPage extends Component {
       this.setState({games: this.state.user.games});
    }
 
-   changeTab = (e) =>{
-      const tab = e.target.id;
+   handleRadio = (e) =>{
+      this.changeTab(e.target.id);
+   }
+
+   changeTab = (tab) =>{ //also used to re-sort list after updating a game
       switch(tab){
          case 'my-games':
             let myGames = this.state.user.games.filter((game)=>{
@@ -134,30 +140,30 @@ class GamesPage extends Component {
             <hr/>
 
             <Tabs>
-               <input type='radio' name='game' id='my-games' onChange={this.changeTab} checked={this.state.tab === 'My Games'}/>
+               <input type='radio' name='game' id='my-games' onChange={this.handleRadio} checked={this.state.tab === 'My Games'}/>
                <label htmlFor="my-games">My Games</label>
 
-               <input type='radio' name='game' id='need-to-finish' onChange={this.changeTab} checked={this.state.tab === 'Need to Finish'}/>
+               <input type='radio' name='game' id='need-to-finish' onChange={this.handleRadio} checked={this.state.tab === 'Need to Finish'}/>
                <label htmlFor="need-to-finish">Need to Finish</label>
 
-               <input type='radio' name='game' id='complete' onChange={this.changeTab} checked={this.state.tab === 'Complete'}/>
+               <input type='radio' name='game' id='complete' onChange={this.handleRadio} checked={this.state.tab === 'Complete'}/>
                <label htmlFor="complete">Completed</label>
 
-               <input type='radio' name='game' id='want-to-play' onChange={this.changeTab} checked={this.state.tab === 'Want to Play'}/>
+               <input type='radio' name='game' id='want-to-play' onChange={this.handleRadio} checked={this.state.tab === 'Want to Play'}/>
                <label htmlFor="want-to-play">Want to Play</label>
 
-               <input type='radio' name='game' id='all' onChange={this.changeTab} checked={this.state.tab === 'All Games'}/>
+               <input type='radio' name='game' id='all' onChange={this.handleRadio} checked={this.state.tab === 'All Games'}/>
                <label htmlFor="all">All Games</label>
             </Tabs>
-            <Window>
-               <h1>{this.state.tab}</h1>
+            <OpenTab>
                <GamesList
                   games={this.state.games}
                   deleteGame={this.deleteGame}
                   changeGame={this.changeGame}
+                  tab={this.state.tab}
                />
                <button onClick={this.addGame}>New Game</button>
-            </Window>
+            </OpenTab>
             <hr/>
 
          </GamesMain>

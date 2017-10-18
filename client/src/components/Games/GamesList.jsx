@@ -38,6 +38,13 @@ const GameSelection = styled.div`
 `
 const GameInfo = styled.div`
    width: 60%;
+   margin: 5%;
+   min-height: 300px;
+
+   background-color: gray;
+   border-radius: 20px;
+
+   padding: 5%;
    background-color: gray;
    border-radius: 20px;
 `
@@ -45,6 +52,10 @@ const GameInfo = styled.div`
 class GamesList extends Component {
    state={
       selectedGame: null
+   }
+
+   componentWillReceiveProps = () =>{
+      this.setState({selectedGame: null});
    }
 
    handleDelete = (e) =>{
