@@ -1,5 +1,12 @@
 import React, { Component } from 'react';
+import styled from 'styled-components';
 import PlatformForm from './PlatformForm';
+
+const PlatformDiv = styled.div`
+  input:hover{
+    background-color: blue;
+  }
+`
 
 class Platform extends Component {
    state={
@@ -23,15 +30,15 @@ class Platform extends Component {
    render() {
       return (
          <div>
-            <hr/>
             {
                this.state.editing ?
                   <PlatformForm platform={this.props.platform} updatePlatform={this.updatePlatform}/>
                :
                   <div>
                      <h1>{this.props.platform.name}</h1>
+                     <hr/>
                      <div>Manufacturer: {this.props.platform.manufacturer}</div>
-                     <div>Price: {this.props.platform.price}</div>
+                     <div>Price: ${this.props.platform.price}</div>
 
                      <button id={this.props.platform._id} onClick={this.props.handleDelete}>Delete</button>
                      <button onClick={this.toggleEdit}>Edit</button>

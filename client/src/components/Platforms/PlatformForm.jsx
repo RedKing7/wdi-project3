@@ -2,40 +2,47 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 
 const FormDiv = styled.div`
-   background-color: black;
+background-color: gray;
+color: white;
+margin-top: 50px;
+
+form{
+   display: flex;
+   flex-direction: column;
+}
+
+input{
+   background: none;
    color: white;
-   
-   .input{
-      width: 70%;
-      margin:0 auto;
-      display: flex;
-      justify-content: space-between;
-   }
+   font-size: 16px;
+   outline: none;
+}
 
-   .check{
-      margin-right: 50%;
+.input{
+   margin-bottom: 10px;
+   display: flex;
+   justify-content: space-between;
+   label{
+      width: 40%;
+      text-align: left;
    }
-
-   form{
-      display: flex;
-      flex-direction: column;
-   }
-
    input{
-      background: none;
-      color: white;
-      font-size: 16px;
-      outline: none;
+      width: 60%;
+      border: none;
+      background-color: #777777;
+      border-bottom: 2px solid lightgray;
+      border-right: 2px solid lightgray;
    }
+}
 
-   .submit{
-         background-color: blue;
-         border: none;
-         width: 80px;
-         margin: 0 auto;
-         margin-top: 10px;
-         border-radius: 20px;
-   }
+.submit{
+      background-color: blue;
+      border: none;
+      width: 80px;
+      margin: 0 auto;
+      margin-top: 10px;
+      border-radius: 20px;
+}
 `
 class PlatformForm extends Component {
    state={

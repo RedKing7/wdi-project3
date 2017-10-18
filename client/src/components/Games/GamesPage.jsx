@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
 import GamesList from './GamesList';
-// import GameForm from './GameForm';
 
 const GamesMain = styled.div`
    text-align: center;

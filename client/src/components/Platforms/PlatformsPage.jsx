@@ -10,11 +10,10 @@ const Main = styled.div`
 
 const PlatformsBlocks = styled.div`
    background-color: darkblue;
+   margin-top: 0;
    max-width: 1000px;
    margin: 0 auto;
    border-radius: 5px;
-   display: flex;
-   flex-direction: row;
 `
 
 class PlatformsPage extends Component {
@@ -69,10 +68,8 @@ class PlatformsPage extends Component {
    render() {
       return (
          <Main>
-            <h1>Platforms</h1>
+            <h1>My Platforms</h1>
             <hr/>
-            <h1>All Platforms</h1>
-
             <PlatformsBlocks>
                <PlatformsList
                   platforms={this.state.platforms}
@@ -80,9 +77,7 @@ class PlatformsPage extends Component {
                   changePlatform={this.changePlatform}
                />
             </PlatformsBlocks>
-
             <hr/>
-
             <button onClick={this.addPlatform}>New Platform</button>
          </Main>
       );

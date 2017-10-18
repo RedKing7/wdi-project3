@@ -35,7 +35,7 @@ class Game extends Component {
                this.state.editing ?
                   <GameForm game={this.props.game} updateGame={this.updateGame}/>
                :
-                  <GameDiv>
+                  <div>
                      <h1>{this.props.game.name}</h1>
                      <hr/>
                      <div>
@@ -43,6 +43,7 @@ class Game extends Component {
                         {
                            this.props.game.owned ? 
                            <div>
+                              <div>Owned</div>
                               <div>Play Time: {this.props.game.playTime}</div>
                               {
                                  this.props.game.progress === 100 ?
@@ -53,7 +54,8 @@ class Game extends Component {
                            </div>
                            :
                            <div>
-                              <div>Price: ${this.props.game.price.toFixed(2)}</div>
+                              <div>Not Owned</div>
+                              <div>Price: ${this.props.game.price}</div>
                            </div>
                         }
                      </div>
@@ -61,7 +63,7 @@ class Game extends Component {
                         <button id={this.props.game._id} onClick={this.props.handleDelete}>Delete</button>
                         <button onClick={this.toggleEdit}>Edit</button>
                      </div>
-                  </GameDiv>
+                  </div>
             }
          </div>
       );

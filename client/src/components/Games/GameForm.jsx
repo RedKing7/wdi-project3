@@ -5,17 +5,6 @@ const FormDiv = styled.div`
    background-color: gray;
    color: white;
    margin-top: 50px;
-   
-   .input{
-      width: 70%;
-      margin:0 auto;
-      display: flex;
-      justify-content: space-between;
-   }
-
-   .check{
-      margin-right: 50%;
-   }
 
    form{
       display: flex;
@@ -27,6 +16,23 @@ const FormDiv = styled.div`
       color: white;
       font-size: 16px;
       outline: none;
+   }
+
+   .input{
+      margin-bottom: 10px;
+      display: flex;
+      justify-content: space-between;
+      label{
+         width: 30%;
+         text-align: left;
+      }
+      input{
+         width: 70%;
+         border: none;
+         background-color: #777777;
+         border-bottom: 2px solid lightgray;
+         border-right: 2px solid lightgray;
+      }
    }
 
    .submit{
@@ -91,23 +97,6 @@ class GameForm extends Component {
                            />
                         </div>
                         
-                        <div className="input">
-                           <label htmlFor='owned'>Owned: </label>
-                           <input
-                              className="check"
-                              id='owned'
-                              name='owned'
-                              type="checkbox"
-                              onChange={this.handleChange}
-                              defaultChecked={
-                                 this.state.changedGame.owned ?
-                                    true
-                                 :
-                                    false
-                              }
-                           />
-                        </div>
-                        
                         {
                               this.state.changedGame.owned ?
                                     <div>
@@ -149,6 +138,22 @@ class GameForm extends Component {
                               step='.01'
                               onChange={this.handleChange}
                               value={this.state.changedGame.price}
+                           />
+                        </div>
+
+                        <div className="input">
+                           <label htmlFor='owned'>Owned: </label>
+                           <input
+                              id='owned'
+                              name='owned'
+                              type="checkbox"
+                              onChange={this.handleChange}
+                              defaultChecked={
+                                 this.state.changedGame.owned ?
+                                    true
+                                 :
+                                    false
+                              }
                            />
                         </div>
 
