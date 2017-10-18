@@ -3,20 +3,29 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom'
 
 const Nav = styled.div`
+   font-family: Sans-serif;
    width: 100%;
    display: flex;
    justify-content: space-around;
    height: 30px;
    background-color: gray;
+   border-radius: 10px;
    align-items: center;
 
    div{
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+      width: 100%;
+   }
+
+   span{
       width: 15%;
       text-align: center;
       border-radius: 10px;
    }
 
-   div:hover{
+   span:hover{
       background-color: blue;
    }
 
@@ -27,13 +36,40 @@ const Nav = styled.div`
 `
 
 class Navbar extends Component {
+   state={
+      currentUserId: null
+   }
+
+   componentWillReceiveProps = () =>{
+      const userId = window.location.pathname.split('/')[1]; // gets the userId portion from the url (yeah, it's hacky)
+      console.log(userId)
+      this.setState({currentUserId: userId})
+   }
+
    render() {
       return (
          <Nav>
-            <div>
-               <Link to='/login'>Log in</Link>
-            </div>
-            {/* if logged in, then show link to platforms and games, and logout */}
+            {
+            this.state.currentUserId !== null && this.state.currentUserId !== 'login' ?
+               <div>
+                  <span>
+                     <Link to={`/${this.state.currentUserId}/games`}>My Games</Link>
+                  </span>
+                  <span>
+                     <Link to={`/${this.state.currentUserId}/platforms`}>My Platforms</Link>
+                  </span>
+                  <span>
+                     <Link onClick={this.props.refreshNav} to='/login'>Change User</Link>
+                  </span>
+                  {/* when going back to login, refresh navbar */}
+               </div>
+            :       
+               <div>
+                  <span>
+                     <Link to='/login'>Log in</Link>
+                  </span>
+               </div>        
+            }
          </Nav>
       );
    }

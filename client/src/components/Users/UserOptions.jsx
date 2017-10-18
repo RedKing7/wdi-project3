@@ -36,9 +36,9 @@ class UserOptions extends Component {
                   <div>
                      <h1>{this.props.selection.username}</h1>
                      <hr/>
-                     <Link to={`/${this.props.selection._id}/games`}>View Games</Link>
+                     <Link onClick={this.props.viewChange} to={`/${this.props.selection._id}/games`}>View Games</Link>
                      <br/>
-                     <Link to={`/${this.props.selection._id}/platforms`}>View Platforms</Link>
+                     <Link onClick={this.props.viewChange} to={`/${this.props.selection._id}/platforms`}>View Platforms</Link>
                      <br/>
                      <Link to={`/login`} onClick={this.handleDelete}>Delete User</Link>
                   </div>

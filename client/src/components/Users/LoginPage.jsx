@@ -66,7 +66,7 @@ class LoginPage extends Component {
             <hr/>
             <Users>
                <UserList users={this.state.users} handleRadio={this.handleRadio}/>
-               <UserOptions selection={this.state.selection} handleDeleteUser={this.deleteUser}/>
+               <UserOptions selection={this.state.selection} handleDeleteUser={this.deleteUser} viewChange={this.props.changeUser}/>
             </Users>
             <hr/>
             <Signup newUser={this.newUser}/>

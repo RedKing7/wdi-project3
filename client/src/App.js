@@ -18,14 +18,26 @@ const Main = styled.div`
 `
 
 class App extends Component {
+  state={
+    refresh: null
+  }
+
+  refreshNavbar = async () =>{
+    try{
+      await this.setState({refresh: true}) //this lets NavBar refresh whenever the user changes
+    }catch(err){console.log(err)}
+  }
+
   render() {
     return (
       <Router>
           <Main>
-            <Navbar/>
+            <Navbar refreshProp={this.state.refresh} refreshNav={this.refreshNavbar}/>
             <Switch>
               <Route exact path="/" render={()=>(<Redirect to='/login'/>)}/>
-              {<Route exact path="/login" component={LoginPage} />}
+              <Route exact path="/login" render={()=>(
+                <LoginPage changeUser={this.refreshNavbar}/>
+              )}/>
               <Route exact path="/:userId/games" component={GamesPage}/>
               <Route exact path="/:userId/platforms" component={PlatformsPage}/>
             </Switch>
