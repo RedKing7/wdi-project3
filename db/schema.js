@@ -24,7 +24,6 @@ const GameSchema = mongoose.Schema({
    },
    platform: {
       type: String,
-      default: 'Choose a platform'
    },
    price: {
       type: Number,
@@ -36,7 +35,7 @@ const PlatformSchema = mongoose.Schema({
    name: {
       type: String,
       required: true,
-      default: 'Name?'
+      default: 'New Platform'
    },
    price: {
       type: Number,

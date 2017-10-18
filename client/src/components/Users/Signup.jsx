@@ -85,7 +85,6 @@ class Signup extends Component {
    }
 
    toggleForm = () =>{
-      console.log('toggle')
       let current = this.state.formActive;
       this.setState({formActive: !current});
    }

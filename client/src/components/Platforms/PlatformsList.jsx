@@ -16,8 +16,26 @@ const PlatformsListDiv = styled.div`
    background-color: gray;
    border-radius: 20px;
 
+   display: flex;
+   flex-direction: column;
+   justify-content: space-between;
+
    h2{
       margin-top: 0;
+   }
+   button{
+      margin-top: 10px;
+      background-color: blue;
+      color: white;
+      font-size: 16px;
+   
+      border-radius: 20px;
+      border: none;
+      outline: none;
+   
+      :active{
+         background-color: darkblue;
+      }
    }
 `
 const PlatformSelection = styled.div`
@@ -84,25 +102,28 @@ class PlatformsList extends Component {
       return (
          <Platforms>
             <PlatformsListDiv>
-            <h2>My Platforms</h2>
-            <hr/>
-            {
-               this.props.platforms.map((platform, index) => {
-                  return (
-                     <PlatformSelection key={platform._id}>
-                        <input
-                           type='radio'
-                           name='platform'
-                           key={platform._id}
-                           id={`platformChoice${index}`}
-                           value={index}
-                           onClick={this.handleRadio}
-                        />
-                        <label htmlFor={`platformChoice${index}`}>{platform.name}</label>
-                     </PlatformSelection>
-                  )
-               })
-            }
+            <div>
+               <h2>My Platforms</h2>
+               <hr/>
+               {
+                  this.props.platforms.map((platform, index) => {
+                     return (
+                        <PlatformSelection key={platform._id}>
+                           <input
+                              type='radio'
+                              name='platform'
+                              key={platform._id}
+                              id={`platformChoice${index}`}
+                              value={index}
+                              onClick={this.handleRadio}
+                           />
+                           <label htmlFor={`platformChoice${index}`}>{platform.name}</label>
+                        </PlatformSelection>
+                     )
+                  })
+               }
+            </div>
+            <button onClick={this.props.addPlatform}>New Platform</button>
             </PlatformsListDiv>
             <PlatformInfo>
             {  

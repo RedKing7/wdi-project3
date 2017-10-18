@@ -74,10 +74,10 @@ class PlatformsPage extends Component {
                   platforms={this.state.platforms}
                   deletePlatform={this.deletePlatform}
                   changePlatform={this.changePlatform}
+                  addPlatform={this.addPlatform}
                />
             </PlatformsBlocks>
             <hr/>
-            <button onClick={this.addPlatform}>New Platform</button>
          </Main>
       );
    }

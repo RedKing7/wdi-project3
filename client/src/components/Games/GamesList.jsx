@@ -16,8 +16,25 @@ const GamesListDiv = styled.div`
    background-color: gray;
    border-radius: 20px;
 
+   display: flex;
+   flex-direction: column;
+   justify-content: space-between;
+
    h2{
       margin-top: 0;
+   }
+   button{
+      background-color: blue;
+      color: white;
+      font-size: 16px;
+   
+      border-radius: 20px;
+      border: none;
+      outline: none;
+   
+      :active{
+         background-color: darkblue;
+      }
    }
 `
 const GameSelection = styled.div`
@@ -84,38 +101,43 @@ class GamesList extends Component {
       return (
          <Games>
             <GamesListDiv>
-               <h2>{this.props.tab}</h2>
-               <hr/>
-            {
-               this.props.games.map((game, index) => {
-                  return (
-                     <GameSelection key={game._id}>
-                        <input
-                           type='radio'
-                           name='game'
-                           key={game._id}
-                           id={`gameChoice${index}`}
-                           value={index}
-                           onClick={this.handleRadio}
-                        />
-                        <label htmlFor={`gameChoice${index}`}>{game.name}</label>
-                     </GameSelection>
-                  )
-               })
-            }
+               <div>
+                  <h2>{this.props.tab}</h2>
+                  <hr/>
+                  {
+                     this.props.games.map((game, index) => {
+                        return (
+                           <GameSelection key={game._id}>
+                              <input
+                                 type='radio'
+                                 name='game'
+                                 key={game._id}
+                                 id={`gameChoice${index}`}
+                                 value={index}
+                                 onClick={this.handleRadio}
+                              />
+                              <label htmlFor={`gameChoice${index}`}>{game.name}</label>
+                           </GameSelection>
+                        )
+                     })
+                  }
+               </div>
+
+               <button onClick={this.props.addGame}>New Game</button>
             </GamesListDiv>
+
             <GameInfo>
-            {  
-               this.state.selectedGame ?
-                  <Game
-                     key={this.state.selectedGame._id}
-                     game={this.state.selectedGame}
-                     handleDelete={this.handleDelete}
-                     handleChange={this.handleUpdate}
-                  />
-               :
-                  null
-            }
+               {  
+                  this.state.selectedGame ?
+                     <Game
+                        key={this.state.selectedGame._id}
+                        game={this.state.selectedGame}
+                        handleDelete={this.handleDelete}
+                        handleChange={this.handleUpdate}
+                     />
+                  :
+                     null
+               }
             </GameInfo>
          </Games>
       );

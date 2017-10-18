@@ -3,8 +3,25 @@ import styled from 'styled-components';
 import PlatformForm from './PlatformForm';
 
 const PlatformDiv = styled.div`
-  input:hover{
+  height: 275px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  button{
     background-color: blue;
+    color: white;
+    font-size: 16px;
+
+    border-radius: 20px;
+    border: none;
+    outline: none;
+
+    :active{
+        background-color: darkblue;
+    }
+  }
+  .edit{
+    margin-right: 25%;
   }
 `
 
@@ -32,17 +49,20 @@ class Platform extends Component {
          <div>
             {
                this.state.editing ?
-                  <PlatformForm platform={this.props.platform} updatePlatform={this.updatePlatform}/>
+                <PlatformForm platform={this.props.platform} updatePlatform={this.updatePlatform}/>
                :
+                <PlatformDiv>
                   <div>
                      <h1>{this.props.platform.name}</h1>
                      <hr/>
                      <div>Manufacturer: {this.props.platform.manufacturer}</div>
                      <div>Price: ${this.props.platform.price}</div>
-
-                     <button id={this.props.platform._id} onClick={this.props.handleDelete}>Delete</button>
-                     <button onClick={this.toggleEdit}>Edit</button>
                   </div>
+                  <div>
+                     <button className='edit' onClick={this.toggleEdit}>Edit</button>
+                     <button id={this.props.platform._id} onClick={this.props.handleDelete}>Delete</button>
+                  </div>
+                </PlatformDiv>
             }
          </div>
       );

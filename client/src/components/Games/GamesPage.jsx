@@ -137,19 +137,19 @@ class GamesPage extends Component {
          <GamesMain>
             <hr/>
             <Tabs>
-               <input type='radio' name='game' id='my-games' onChange={this.handleRadio} checked={this.state.tab === 'My Games'}/>
+               <input type='radio' name='tab' id='my-games' onChange={this.handleRadio} checked={this.state.tab === 'My Games'}/>
                <label htmlFor="my-games">My Games</label>
 
-               <input type='radio' name='game' id='need-to-finish' onChange={this.handleRadio} checked={this.state.tab === 'Need to Finish'}/>
+               <input type='radio' name='tab' id='need-to-finish' onChange={this.handleRadio} checked={this.state.tab === 'Need to Finish'}/>
                <label htmlFor="need-to-finish">Need to Finish</label>
 
-               <input type='radio' name='game' id='complete' onChange={this.handleRadio} checked={this.state.tab === 'Completed'}/>
+               <input type='radio' name='tab' id='complete' onChange={this.handleRadio} checked={this.state.tab === 'Completed'}/>
                <label htmlFor="complete">Completed</label>
 
-               <input type='radio' name='game' id='want-to-play' onChange={this.handleRadio} checked={this.state.tab === 'Want to Play'}/>
+               <input type='radio' name='tab' id='want-to-play' onChange={this.handleRadio} checked={this.state.tab === 'Want to Play'}/>
                <label htmlFor="want-to-play">Want to Play</label>
 
-               <input type='radio' name='game' id='all' onChange={this.handleRadio} checked={this.state.tab === 'All Games'}/>
+               <input type='radio' name='tab' id='all' onChange={this.handleRadio} checked={this.state.tab === 'All Games'}/>
                <label htmlFor="all">All Games</label>
             </Tabs>
             <OpenTab>
@@ -158,8 +158,8 @@ class GamesPage extends Component {
                   deleteGame={this.deleteGame}
                   changeGame={this.changeGame}
                   tab={this.state.tab}
+                  addGame={this.addGame}
                />
-               <button onClick={this.addGame}>New Game</button>
             </OpenTab>
             <hr/>
 

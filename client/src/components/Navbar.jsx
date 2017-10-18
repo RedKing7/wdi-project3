@@ -20,7 +20,7 @@ const Nav = styled.div`
    }
 
    span{
-      width: 8%;
+      width: 120px;
       text-align: center;
       border-radius: 10px;
    }
