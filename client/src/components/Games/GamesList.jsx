@@ -37,9 +37,9 @@ const GameSelection = styled.div`
    }
 `
 const GameInfo = styled.div`
+   height: 300px;
    width: 60%;
    margin: 5%;
-   min-height: 300px;
 
    background-color: gray;
    border-radius: 20px;

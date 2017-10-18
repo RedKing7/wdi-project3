@@ -39,7 +39,7 @@ const PlatformSelection = styled.div`
 const PlatformInfo = styled.div`
    width: 60%;
    margin: 5%;
-   min-height: 300px;
+   height: 300px;
 
    background-color: gray;
    border-radius: 20px;
