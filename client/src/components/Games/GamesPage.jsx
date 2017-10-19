@@ -78,6 +78,7 @@ class GamesPage extends Component {
             game: changedGame
          })
          await this.setState({user: response.data})
+         await this.refreshGames();
          this.changeTab(this.state.tab);
       }catch(err){console.log(err)}
    }
