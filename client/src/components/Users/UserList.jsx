@@ -11,7 +11,6 @@ const UserListDiv = styled.div`
 
    padding: 5%;
 `
-
 const Selection = styled.div`
    label{
       display: block;

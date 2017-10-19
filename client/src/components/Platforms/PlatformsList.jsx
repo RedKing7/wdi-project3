@@ -24,7 +24,7 @@ const PlatformsListDiv = styled.div`
       margin-top: 0;
    }
    button{
-      margin-top: 10px;
+      margin-top: 15px;
       background-color: blue;
       color: white;
       font-size: 16px;

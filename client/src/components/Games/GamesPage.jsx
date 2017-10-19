@@ -140,17 +140,17 @@ class GamesPage extends Component {
                <input type='radio' name='tab' id='my-games' onChange={this.handleRadio} checked={this.state.tab === 'My Games'}/>
                <label htmlFor="my-games">My Games</label>
 
+               <input type='radio' name='tab' id='all' onChange={this.handleRadio} checked={this.state.tab === 'All Games'}/>
+               <label htmlFor="all">All Games</label>
+
+               <input type='radio' name='tab' id='want-to-play' onChange={this.handleRadio} checked={this.state.tab === 'Want to Play'}/>
+               <label htmlFor="want-to-play">Want to Play</label>
+
                <input type='radio' name='tab' id='need-to-finish' onChange={this.handleRadio} checked={this.state.tab === 'Need to Finish'}/>
                <label htmlFor="need-to-finish">Need to Finish</label>
 
                <input type='radio' name='tab' id='complete' onChange={this.handleRadio} checked={this.state.tab === 'Completed'}/>
                <label htmlFor="complete">Completed</label>
-
-               <input type='radio' name='tab' id='want-to-play' onChange={this.handleRadio} checked={this.state.tab === 'Want to Play'}/>
-               <label htmlFor="want-to-play">Want to Play</label>
-
-               <input type='radio' name='tab' id='all' onChange={this.handleRadio} checked={this.state.tab === 'All Games'}/>
-               <label htmlFor="all">All Games</label>
             </Tabs>
             <OpenTab>
                <GamesList
